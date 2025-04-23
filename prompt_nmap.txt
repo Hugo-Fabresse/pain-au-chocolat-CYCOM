@@ -1,0 +1,23 @@
+Voici le résultat brut d'une commande Nmap réalisée sur une machine dans le cadre de la préparation d'une room CTF. Ton objectif est de l'analyser comme un expert en cybersécurité offensive, et de m'indiquer les informations les plus importantes pour attaquer ou exploiter cette machine.
+
+Je souhaite que tu :
+
+    1. Repères les services et ports intéressants (ceux qui laissent penser à des failles potentielles ou à des vecteurs d'attaque).
+
+    2. Pour chaque point intéressant :
+
+        - Explique pourquoi il est intéressant dans un contexte de CTF.
+
+        - Décris les vulnérabilités potentielles connues, s'il y en a (en citant par exemple des CVE si possible).
+
+        - Suggère des pistes d'exploitation concrètes (outils à utiliser, types d'attaques, exemples de commandes si pertinent).
+
+    3. Ne donne que l'essentiel : évite les descriptions trop génériques ou encyclopédiques.
+
+    4. Présente les résultats de manière claire, synthétique, et orientée "attaque" (comme un pentester qui cherche une brèche).
+
+    5. Tu peux proposer un ordre de priorité dans les tests ou attaques à mener.
+
+🔒 Important : Reste focalisé sur l'aspect CTF. Je veux que ce prompt m'aide à identifier les portes d'entrée potentielles les plus efficaces, sans analyse superflue.
+
+📄 Voici le scan Nmap :
