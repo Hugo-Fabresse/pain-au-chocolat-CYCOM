@@ -1,5 +1,6 @@
 import openai
 import re
+import sys
 
 # Configurez votre clé API OpenAI via une variable d'environnement pour plus de sécurité
 openai.api_key = ""
@@ -63,16 +64,10 @@ def call_AI(command_output):
 
     is_nmap, result_nmap = tool_nmap(command_output)
     if is_nmap:
-        print("\nAnalyse du scan Nmap :")
-        print("-" * 50)
-        print(result_nmap)
-        return
+        return result_nmap
 
     is_gobuster, result_gobuster = tool_gobuster(command_output)
     if is_gobuster:
-        print("\nAnalyse du scan Gobuster :")
-        print("-" * 50)
-        print(result_gobuster)
-        return
+        return result_gobuster
 
-    print("\nSortie non reconnue comme Nmap ou Gobuster.")
+    return "\nSortie vide.\n"

@@ -25,7 +25,7 @@ def run_gobuster(url):
     print(f"Running Gobuster on: {url}")
     try:
         result = subprocess.run(['gobuster', 'dir', '-u', url, '-w',
-        'wordlists/rockyou_2k.txt', '--exclude-length', '2245'], capture_output=True, text=True, check=True)
+        'wordlist/rockyou.txt', '--exclude-length', '2245'], capture_output=True, text=True, check=True)
         print("result: ", result.stdout)
         return result.stdout
     except subprocess.CalledProcessError as e:

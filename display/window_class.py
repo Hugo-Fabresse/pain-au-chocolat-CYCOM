@@ -3,6 +3,8 @@ import customtkinter as ctk
 import tkinter as tk
 from tkinter import messagebox
 import requests
+from tool_tests import check_command
+from report_AI import call_AI
 
 class Window:
     def __init__(self):
@@ -40,6 +42,14 @@ class Window:
                 response = requests.get(self.url, timeout=3)
                 if response.status_code == 200:
                     messagebox.showinfo("Audit", f"Lancement de l'audit sur : {self.url}")
+                    nnmap = check_command.run_nmap(self.url)
+                    gobuster = check_command.run_gobuster(self.url)
+                    self.result = "Check nmap:\n-------------------------------\n"
+                    self.result += call_AI(nnmap)
+                    print(self.result)
+                    self.result += "\n\nCheck gobuster:\n-------------------------------\n"
+                    self.result += call_AI(gobuster)
+                    print(self.result)
                     self.display_error()
                 else:
                     messagebox.showerror("Erreur", f"Site injoignable (code {response.status_code})")
