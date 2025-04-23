@@ -1,4 +1,6 @@
+from urllib.parse import urlparse
 import customtkinter as ctk
+import tkinter as tk
 from tkinter import messagebox
 import requests
 
@@ -9,7 +11,7 @@ class Window:
 
         self.root = ctk.CTk()
         self.root.title("Audit Web")
-        self.root.geometry("400x200")
+        self.center_window()
         self.root.resizable(False, False)
 
         self.url = ""
@@ -22,12 +24,16 @@ class Window:
         self.entry_url = ctk.CTkEntry(self.root, width=300, placeholder_text="Ex: https://example.com")
         self.entry_url.pack(pady=10)
 
+        self.entry_url.bind("<Return>", lambda event: self.launch_audit())
         ctk.CTkButton(self.root, text="🚀 Lancer l'audit", command=self.launch_audit).pack(pady=20)
 
     def launch_audit(self):
         self.url = self.entry_url.get()
 
         if self.url:
+            if not self.url.startswith(("http://", "https://")):
+                messagebox.showerror("Erreur", "L'URL doit commencer par http:// ou https://")
+                return
             try:
                 response = requests.get(self.url, timeout=3)
                 if response.status_code == 200:
@@ -41,3 +47,12 @@ class Window:
 
     def run(self):
         self.root.mainloop()
+
+    def center_window(self, width=400, height=200):
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+
+        x = (screen_width // 2) - (width // 2)
+        y = (screen_height // 2) - ((height // 2) * 2)
+
+        self.root.geometry(f"{width}x{height}+{x}+{y}")
