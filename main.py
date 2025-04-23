@@ -1,7 +1,5 @@
 #! /usr/bin/env python3
 
-import tkinter as tk
-from tkinter import messagebox
 from display.window_class import Window
 
 def main():
