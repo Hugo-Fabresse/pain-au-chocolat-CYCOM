@@ -15,6 +15,7 @@ class Window:
         self.root.resizable(False, False)
 
         self.url = ""
+        self.result = ""
 
         self.set_ask()
 
@@ -28,6 +29,7 @@ class Window:
         ctk.CTkButton(self.root, text="🚀 Lancer l'audit", command=self.launch_audit).pack(pady=20)
 
     def launch_audit(self):
+        self.result = ""
         self.url = self.entry_url.get()
 
         if self.url:
@@ -38,6 +40,7 @@ class Window:
                 response = requests.get(self.url, timeout=3)
                 if response.status_code == 200:
                     messagebox.showinfo("Audit", f"Lancement de l'audit sur : {self.url}")
+                    self.display_error()
                 else:
                     messagebox.showerror("Erreur", f"Site injoignable (code {response.status_code})")
             except requests.RequestException as e:
@@ -56,3 +59,25 @@ class Window:
         y = (screen_height // 2) - ((height // 2) * 2)
 
         self.root.geometry(f"{width}x{height}+{x}+{y}")
+    
+    def display_error(self):
+        self.root.resizable(True, True)
+
+        if hasattr(self, "textbox"):
+            self.textbox.delete("1.0", "end")
+            self.textbox.insert("1.0", self.result)
+            return
+
+        self.text_frame = ctk.CTkFrame(self.root)
+        self.text_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+        self.textbox = ctk.CTkTextbox(self.text_frame, wrap="word", font=("Consolas", 12))
+        self.textbox.pack(fill="both", expand=True, padx=5, pady=5)
+
+        self.textbox.insert("1.0", self.result)
+        self.textbox.configure(state="normal")
+
+        self.center_window(height=400)
+
+
+
