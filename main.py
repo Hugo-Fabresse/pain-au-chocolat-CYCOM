@@ -2,7 +2,7 @@
 
 import tkinter as tk
 from tkinter import messagebox
-from window_class import Window
+from display.window_class import Window
 
 def main():
     app = Window()
