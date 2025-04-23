@@ -1,0 +1,23 @@
+Voici le résultat brut d'une commande Gobuster réalisée sur une machine dans le cadre de la préparation d'une room CTF. Ton objectif est de l'analyser comme un expert en cybersécurité offensive, et de m'indiquer les informations les plus utiles pour identifier une surface d'attaque web.
+
+Je souhaite que tu :
+
+    1. Repères les chemins, fichiers ou répertoires intéressants (ceux qui laissent penser à une mauvaise configuration, une interface admin, un fichier sensible, ou un vecteur d'exploitation).
+
+    2. Pour chaque chemin ou fichier intéressant :
+
+        - Explique pourquoi il est intéressant dans un contexte CTF/pentest.
+
+        - Décris les vulnérabilités potentielles associées (exemples d'abus connus, extensions dangereuses, mauvaises pratiques, etc.).
+
+        - Suggère des pistes d'exploitation concrètes : outils à utiliser (Burp, wfuzz, curl…), attaques envisageables (LFI, brute force, bypass d'auth, upload malveillant, etc.), exemples de commandes si pertinent.
+
+    3. Ne donne que l'essentiel : pas de descriptions encyclopédiques, uniquement ce qui peut aider à exploiter la cible rapidement.
+
+    4. Présente les résultats de manière claire, synthétique, et orientée “attaque”, comme un redteamer ou pentester qui cherche le point d'entrée web.
+
+    5. Tu peux proposer un ordre de priorité dans les chemins à tester ou exploiter, en fonction de leur potentiel offensif.
+
+📌 Important : reste focalisé sur l'approche web offensive propre aux CTFs. Je veux que ce prompt me permette d'identifier les entrées web critiques, sans bruit inutile.
+
+📄 Voici le scan Gobuster :
